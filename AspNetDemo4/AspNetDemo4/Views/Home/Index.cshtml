@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Ajax.ActionLink(
+"Where are my Sandwiches??????",
+"GetSandwiches",
+new
+{
+    dishName = "Veggie Delicious Sandwiches",
+    ingredients = "Lettuce, Onion, Pepper"
+},
+new AjaxOptions
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SandwichStation",
+    OnBegin = "myonbegin",
+    OnSuccess = "myonsuccess",
+    OnComplete = "myoncomplete",
+    OnFailure = "myonfailure"
+},
+new 
+{
+    @class = "restaurant",
+    data_theme = "c",
+    data_icon = "true"
+}
+)
+<img id="animatedgif" src="~/Images/loadingAnimation.gif" />
+<div id="SandwichStation">
+    This is the text that will be replaced by the contents of Partial View.
+</div>
+
+<input id="myajaxlink" type="button"   value="Place your Order here">
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#animatedgif").hide();
+            $("#myajaxlink").click(function () {
+                $.ajax({
+                    url: "/Home/GetSandwiches",
+                    type: "POST",
+                    data: { dishName: "Grilled Sandwich", ingredients: "Garlic Chutney" }
+                }).done(function () {
+
+                }).complete(function (){
+                    $("#animatedgif").hide();
+                }).success(function (dv) {
+                    $("#SandwichStation").replaceWith(dv);
+                });
+            });
+        });
+        $(document).ajaxStart(function () {
+            $("#animatedgif").show();
+        }).ajaxSuccess(function () {
+            $("#animatedgif").hide();
+        });
+
+        function myonbegin() {
+            //show animated gif
+            //alert("helloworld");
+            $("#animatedgif").show();
+        }
+        function myonsuccess() {
+            //disable animated gif
+            $("#animatedgif").hide();
+        }
+        function myonfailure() {
+            //disbale animated gif
+            $("#animatedgif").hide();
+        }
+        function myoncomplete() {
+            //disable animated gif
+            $("#animatedgif").hide();
+        }
+    </script>
+}
