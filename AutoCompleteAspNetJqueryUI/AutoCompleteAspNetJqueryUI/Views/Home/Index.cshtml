@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+</p>
+      Search the Person by typing in the LastName of the user.
+  </p>
+  <div>
+      @using (Html.BeginForm())
+      {    
+          <p>
+              @Html.TextBox("SearchString")
+              <input type="submit" value="Search">
+          </p>
+      }
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        //Javascript function to provide AutoComplete and Intellisense feature for finding Users.
+        $(document).ready(function () {
+            $("#SearchString").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/Find",
+                        data: "{ 'prefixText': '" + request.term + "' }",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                 return {
+                                    label: item.value,
+                                    value: item.value,
+                                    id: item.id,
+                                    firstname: item.firstname,
+                                    lastname: item.lastname
+                                }
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus);
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function (even, ui) {
+                    window.location.href = '/Home/details/' + ui.item.id;
+                    }
+            });
+        });
+    </script>
+}

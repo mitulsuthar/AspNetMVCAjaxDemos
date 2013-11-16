@@ -1,0 +1,106 @@
+﻿@model AutoCompleteAspNetJqueryUI.Models.Person
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Person</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BusinessEntityID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessEntityID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PersonType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PersonType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NameStyle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NameStyle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MiddleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MiddleName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Suffix)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Suffix)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EmailPromotion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmailPromotion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AdditionalContactInfo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AdditionalContactInfo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Demographics)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Demographics)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rowguid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rowguid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
