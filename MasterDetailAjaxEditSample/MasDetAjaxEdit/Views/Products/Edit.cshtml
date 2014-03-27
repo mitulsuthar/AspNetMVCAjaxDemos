@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MasDetAjaxEdit.Models.Product>
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<div id="allProducts">
+    @*Display All the products here*@
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Color</th>
+                <th>ListPrice</th>
+                <th>Style</th>
+                <th>Select</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Color</td>
+                    <td>@product.ListPrice</td>
+                    <td>@product.Style</td>
+                    <td>
+                        @Ajax.ActionLink("Edit", "GetProduct", "Products",
+                    new { id = @product.ProductID },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "editProduct",
+                        InsertionMode = InsertionMode.Replace
+                    }, null)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="editProduct">
+    @*Show individual product edit view here*@
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unobtrusive")
+}
