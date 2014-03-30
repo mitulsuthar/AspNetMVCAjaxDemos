@@ -217,6 +217,7 @@
       <DependentUpon>AdventureWorks.edmx</DependentUpon>
       <LastGenOutput>AdventureWorks.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\Sample-AppTest.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
